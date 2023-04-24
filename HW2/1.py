@@ -49,8 +49,8 @@ def hillClimbing(s):
             #print(fails)
         if fails >= max_loops:
             break
-    print("路徑:", best)
-    print("路徑長度：", circle_length(best))
+    print("最佳路徑:", best)
+    print("最佳路徑長度：", circle_length(best))
     return best
 
 hillClimbing(froad)
@@ -73,4 +73,3 @@ hillClimbing(froad)
 # print("-------------------")
 # hillClimbing(froad)
 # print("-------------------")
-##
