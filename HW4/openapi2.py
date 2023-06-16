@@ -1,7 +1,6 @@
 import openai
 
-openai.api_key = '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'
-
+openai.api_key = 'Your API TOKEN'
 print("請輸入詩歌題目：")
 title = input()
 print("請輸入一句本詩歌發想語：")
