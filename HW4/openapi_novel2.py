@@ -1,7 +1,6 @@
 import openai
 
-openai.api_key = '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'
-
+openai.api_key = 'Your API TOKEN'
 def generate_novel(title, protagonist_name, protagonist_age, protagonist_gender):
     prompt = f"標題：{title}\n\n故事開始：\n主角是一個名叫{protagonist_name}的{protagonist_age}歲{protagonist_gender}。"
     response = openai.Completion.create(
