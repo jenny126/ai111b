@@ -15,14 +15,16 @@ def generate_novel(title, protagonist_name, protagonist_age, protagonist_gender)
     
     return novel
 
-print("請輸入小說標題：")
-title = input()
-print("請輸入主角姓名：")
-protagonist_name = input()
-print("請輸入主角年齡：")
-protagonist_age = input()
-print("請輸入主角性別：")
-protagonist_gender = input()
-
-novel = generate_novel(title, protagonist_name, protagonist_age, protagonist_gender)
-print(novel)
+while True:
+    print("請輸入小說標題：")
+    title = input()
+    print("請輸入主角姓名：")
+    protagonist_name = input()
+    print("請輸入主角年齡：")
+    protagonist_age = input()
+    print("請輸入主角性別：")
+    protagonist_gender = input()
+    rule="請輸出超過2000字並以小說格式撰寫完成"
+    rule=input()
+    novel = generate_novel(title, protagonist_name, protagonist_age, protagonist_gender)
+    print(novel)
