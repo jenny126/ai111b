@@ -1,7 +1,10 @@
 import csv
 import numpy as np
 import tensorflow as tf
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split,confusion_matrix, classification_report
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 RANDOM_SEED = 42
 # 路徑指定
@@ -28,11 +31,10 @@ model = tf.keras.models.Sequential([
     tf.keras.layers.Dense((42//4)+1, activation='relu'),
     tf.keras.layers.Dense(NUM_CLASSES, activation='softmax')
 ])
-
-# 模型檢查點回調
+#保存整個模型
 cp_callback = tf.keras.callbacks.ModelCheckpoint(
     model_save_path, verbose=1, save_weights_only=False)
-# 早期終止用回撥函數
+#20次沒有變好停止
 es_callback = tf.keras.callbacks.EarlyStopping(patience=20, verbose=1)
 
 # 模型編譯
@@ -51,12 +53,7 @@ model.fit(
     validation_data=(X_test, y_test),
     callbacks=[cp_callback, es_callback]
 )
-
-import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
-from sklearn.metrics import confusion_matrix, classification_report
-
+# 混淆矩陣
 def print_confusion_matrix(y_true, y_pred, report=True):
     labels = sorted(list(set(y_true)))
     cmx_data = confusion_matrix(y_true, y_pred, labels=labels)
