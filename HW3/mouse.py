@@ -2,11 +2,11 @@ import random
 
 my_mapx = 5
 my_mapy = 10
-
+roadx=[]
 my_map = []
 road=[]
-
-move= [[-1, 0], [1, 0], [0, -1], [0, 1]]
+# 前後左右
+move= [[0, 1], [0, -1], [-1, 0], [1, 0]]
 n_count=[0,0,0,0]
 count=0
 for i in range(my_mapx + 1):
@@ -26,6 +26,17 @@ for x in range(my_mapx + 1):
             M_row = x
             M_col = y
 inside=True
+
+for x in range(0,my_mapx):
+    for y in range(0,my_mapy):
+        for i in range(0,len(move)):
+            if my_map[M_row+move[i][0]][M_col+move[i][1]]=='.':
+                n_count[i]=1
+            roadx.append(n_count)
+        road.append(roadx)
+        roadx=[]
+print(road)
+"""
 while inside:
     count=count+1
     for x in range(my_mapx + 1):
@@ -33,11 +44,17 @@ while inside:
             if my_map[x][y] == 'M':
                 M_row = x
                 M_col = y
-    for i in range(0,len(move)):
-        if my_map[M_row][M_col]+move[i]=='.':
-            n_count[i]=1
+                now=[M_row,M_col]
+#    for i in range(0,len(move)):
+#        if my_map[M_row][M_col]+move[i]=='.':    
+#            n_count[i]=1
+
     for x in range(my_mapx + 1):
         for y in range(my_mapy + 1):
-            for i in range(0,len(move)+1):
+            for i in range(0,len(move)):
                 if n_count[i]==1:
-                    my_map[M_row][M_col]=count
+
+                    my_map[M_row][M_col]="a"
+                    my_map[M_row][M_col]=my_map[M_row+move[i][0]][M_col+move[i][1]]
+                    my_map[M_row][M_col]="M"
+"""
